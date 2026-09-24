@@ -1,0 +1,239 @@
+#root {
+  min-height: 100vh;
+}
+
+.App {
+  width: min(100% - 32px, 720px);
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.title {
+  margin: 0;
+  color: var(--heading);
+  font-size: clamp(2.25rem, 7vw, 4rem);
+  line-height: 1;
+}
+
+.tagline {
+  margin: 12px 0 0;
+  color: var(--muted-text);
+  font-size: 1.05rem;
+}
+
+.task-form {
+  margin-bottom: 28px;
+}
+
+#inp {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(35, 71, 66, 0.08);
+}
+
+#inp input {
+  min-width: 0;
+  flex: 1;
+  padding: 15px 18px;
+  border: 0;
+  outline: 0;
+  color: var(--input-text);
+  background: transparent;
+}
+
+#inp input::placeholder {
+  color: var(--muted-text);
+}
+
+#inp button,
+.task-list button,
+.clear-btn {
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.theme-toggle {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--heading);
+  background: var(--surface);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+#inp button {
+  margin: 6px;
+  padding: 0 18px;
+  color: #ffffff;
+  background: var(--accent);
+}
+
+#inp button:hover,
+.task-list button:hover,
+.clear-btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+#btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#btns select {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--surface);
+}
+
+.task-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 4px 14px rgba(35, 71, 66, 0.05);
+}
+
+.task-list li.completed {
+  color: var(--muted-text);
+  background: var(--accent-soft);
+}
+
+.task-list li.completed span {
+  text-decoration: line-through;
+}
+
+.task-list li small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted-text);
+  font-size: 0.78rem;
+}
+
+.task-list li > div:last-child {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.task-list button {
+  padding: 8px 11px;
+  color: var(--heading);
+  background: var(--accent-soft);
+}
+
+.task-list li > div:last-child button:last-child {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.progress-tracker {
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--progress);
+  color: #ffffff;
+}
+
+.progress-tracker p {
+  margin: 0 0 12px;
+}
+
+.progress-bar {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.progress {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-fill);
+  transition: width 240ms ease;
+}
+
+.clear-btn {
+  display: block;
+  margin: 24px auto 0;
+  padding: 11px 18px;
+  color: #ffffff;
+  background: var(--danger);
+}
+
+@media (max-width: 560px) {
+  .App {
+    width: min(100% - 24px, 720px);
+    padding: 32px 0;
+  }
+
+  .task-list li {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .task-list li > div:last-child {
+    width: 100%;
+  }
+
+  .task-list li > div:last-child button {
+    flex: 1;
+  }
+
+  .header-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .theme-toggle {
+    align-self: center;
+  }
+}
+
+@media (max-width: 400px) {
+  #btns {
+    flex-direction: column;
+  }
+
+  #inp button {
+    padding: 0 12px;
+  }
+}
